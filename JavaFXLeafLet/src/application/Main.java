@@ -1,6 +1,6 @@
 package application;
 	
-import application.controllers.JavaFXLeafLetController;
+import application.controllers.MainController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,7 +10,7 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		try {	
 			
-			JavaFXLeafLetController mainController = new JavaFXLeafLetController();
+			MainController mainController = new MainController();
 			mainController.startApplication(primaryStage);
 			
 		} catch(Exception e) {

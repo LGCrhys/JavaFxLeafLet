@@ -11,25 +11,26 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Screen;
 
-public class JavaFXLeafLetView extends BorderPane {
+public class MainView extends BorderPane {
 	
 	final String html = Config.getProperty("mapurl");
     URI uri;
 
-	public JavaFXLeafLetView() {
+	public MainView() {
 		
 		super();
 		try {
 			uri = new URI(html);
 			
-	        /*final SwingNode swingNode = new SwingNode();
-	        createSwingContent(swingNode);*/
+	        final SwingNode swingNode = new SwingNode();
+	        createSwingContent(swingNode);
 	        
 	        // create WebView with specified local content
 	        final WebView map = new WebView();
 	        map.getEngine().load(uri.toString());
 	        map.setZoom(Screen.getPrimary().getDpi() / 96);  
-	        
+
+            setTop(swingNode);
 	        setCenter(map); 
 	        
 		} catch (URISyntaxException e) {
@@ -38,13 +39,10 @@ public class JavaFXLeafLetView extends BorderPane {
 		}	             
 	}
 	
-
-	
 	private void createSwingContent(final SwingNode swingNode) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-                //swingNode.setContent();
             }
         });
     }

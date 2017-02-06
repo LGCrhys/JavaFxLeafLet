@@ -1,14 +1,13 @@
 package application.controllers;
 
 import application.Config;
-import application.views.JavaFXLeafLetView;
+import application.views.MainView;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-public class JavaFXLeafLetController {
+public class MainController {
 	
-	final JavaFXLeafLetView view = new JavaFXLeafLetView();
+	final MainView view = new MainView();
 
 	public void startApplication(Stage primaryStage){
 		
