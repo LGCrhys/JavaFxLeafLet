@@ -11,7 +11,7 @@ public class MainController {
 
 	public void startApplication(Stage primaryStage){
 		
-		Scene s = new Scene(view, 1000, 800);	        
+		Scene s = new Scene(view, 1400, 800);	        
  
         primaryStage.setTitle(Config.getProperty("title"));
         primaryStage.setScene(s);
