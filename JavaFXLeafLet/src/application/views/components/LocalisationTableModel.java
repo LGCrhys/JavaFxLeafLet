@@ -7,11 +7,18 @@ import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
 import application.models.Localisation;
+import application.services.LocalisationService;
 
 public class LocalisationTableModel implements TableModel {
 	
 	private List<Localisation> localisations = new ArrayList<Localisation>();
-	private final String[] headers = { "Name", "Longitude", "Latitude", "Hostility"};	
+	private final String[] headers = { "Name", "Longitude", "Latitude", "Hostility"};
+	
+	
+	public LocalisationTableModel() {
+		LocalisationService locService = LocalisationService.getInstance();
+		localisations = locService.getLocalisations();
+	}
 
 	@Override
 	public int getColumnCount() {

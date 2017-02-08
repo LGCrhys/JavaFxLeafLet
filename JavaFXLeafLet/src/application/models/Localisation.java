@@ -4,16 +4,35 @@ import application.enums.Hostility;
 
 public class Localisation {
 
-	private final String name;
-	private final Double longitude;
-	private final Double latitude;
+	private int id;
+	private String name;
+	private Double longitude;
+	private Double latitude;
 	private Hostility hostility;
 
-	public Localisation(String name, Double longitude, Double latitude, Hostility hostility){
+
+	public Localisation(int id){
+		this.id = id;
+		this.name = "";
+		this.longitude = 0.0;
+		this.latitude = 0.0;
+		this.hostility = Hostility.Inconnu;
+	}
+	
+	public Localisation(int id, String name, Double longitude, Double latitude, Hostility hostility){
+		this.id = id;
 		this.name = name;
 		this.longitude = longitude;
 		this.latitude = latitude;
 		this.hostility = hostility;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -28,6 +47,18 @@ public class Localisation {
 	public Hostility getHostility() {
 		return hostility;
 	}	
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
 	public void setHostility(Hostility hostility) {
 		this.hostility = hostility;
 	}
