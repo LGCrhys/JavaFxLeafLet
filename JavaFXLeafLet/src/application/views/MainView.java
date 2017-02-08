@@ -8,13 +8,17 @@ import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 import application.Config;
+import application.views.components.LocalisationTable;
 import application.views.components.LocalisationTableModel;
 import javafx.embed.swing.SwingNode;
-import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.web.WebView;
 import javafx.stage.Screen;
 
-public class MainView extends BorderPane {
+public class MainView extends GridPane {
 	
 	final String html = Config.getProperty("mapurl");
     URI uri;
@@ -33,10 +37,18 @@ public class MainView extends BorderPane {
 	        // create WebView with specified local content
 	        map = new WebView();
 	        map.getEngine().load(uri.toString());
-	        map.setZoom(Screen.getPrimary().getDpi() / 96);  
-
-	        setCenter(map); 
-            setRight(tableSwingNode);
+	        map.setZoom(Screen.getPrimary().getDpi() / 96);
+	        
+	        RowConstraints growingRow = new RowConstraints();
+	        growingRow.setVgrow(Priority.ALWAYS);
+	        getRowConstraints().add(growingRow);
+	        
+	        ColumnConstraints column = new ColumnConstraints();
+	        column.setPercentWidth(75);
+	        getColumnConstraints().add(column);
+	        
+	        add(map, 0, 0);
+	        add(tableSwingNode,1,0);
 	        
 		} catch (URISyntaxException e) {
 			// TODO Auto-generated catch block
@@ -49,7 +61,7 @@ public class MainView extends BorderPane {
             @Override
             public void run() {
             	LocalisationTableModel model = new LocalisationTableModel();
-            	LocalisatonTable = new JTable(model);
+            	LocalisatonTable = new LocalisationTable(model);
             	tableSwingNode.setContent(new JScrollPane(LocalisatonTable));
             }
         });

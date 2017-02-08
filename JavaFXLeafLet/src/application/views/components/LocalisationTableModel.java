@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import application.enums.Hostility;
 import application.models.Localisation;
 import application.services.LocalisationService;
 
@@ -82,7 +83,7 @@ public class LocalisationTableModel implements TableModel {
 
 		case 3:
 			// Hostility
-			return String.class;
+			return Hostility.class;
 
 		default:
 			throw new IllegalArgumentException();
