@@ -43,4 +43,23 @@ public class LocalisationTable extends JTable implements Paginable{
 		return c;
 	}
 
+	@Override
+	public void goToPage(int page) {
+		((LocalisationTableModel) getModel()).changePage(page);
+		revalidate();
+		repaint();		
+	}
+
+	@Override
+	public void changePageSize(int size) {
+		((LocalisationTableModel) getModel()).changePageSize(size);
+		revalidate();
+		repaint();
+	}
+
+	@Override
+	public int getNbOfRecords() {
+		return ((LocalisationTableModel) getModel()).getNbOfLocalisations();
+	}
+
 }

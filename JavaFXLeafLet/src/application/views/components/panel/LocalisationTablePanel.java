@@ -26,7 +26,6 @@ public class LocalisationTablePanel extends JPanel {
 		table = new LocalisationTable(model);
 	
 		toolbar = new PaginationToolbar(table);
-		toolbar.setPageSize(40);
 		
 	   	add(new JScrollPane(table),BorderLayout.CENTER);
     	add(toolbar, BorderLayout.PAGE_END);

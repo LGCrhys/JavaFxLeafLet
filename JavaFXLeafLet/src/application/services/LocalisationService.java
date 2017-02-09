@@ -25,7 +25,12 @@ public class LocalisationService {
 	}
 	
 	public synchronized List<Localisation> getLocalisations(int offset, int recordsNb){
-		
-		return localisations.subList(offset, offset+recordsNb);
+		int start = offset * recordsNb;
+		int end = recordsNb * (offset + 1);
+		return localisations.subList(start, end>localisations.size()?localisations.size():end);
+	}
+
+	public int getNbOfLocalisations() {
+		return localisations.size();
 	}	
 }

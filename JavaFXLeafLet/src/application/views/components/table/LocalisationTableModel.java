@@ -10,17 +10,26 @@ import application.enums.Hostility;
 import application.models.Localisation;
 import application.services.LocalisationService;
 
-public class LocalisationTableModel implements TableModel {
+public class LocalisationTableModel implements TableModel { 
 	
 	private List<Localisation> localisations = new ArrayList<Localisation>();
 	private final String[] headers = { "Name", "Longitude", "Latitude", "Hostility"};
-	private int pageSize = 40;
+	private int pageSize = 0;
 	private int currentPage = 0;
-	
-	
-	public LocalisationTableModel() {
+		
+	public void updateData(){
 		LocalisationService locService = LocalisationService.getInstance();
-		localisations = locService.getLocalisations(currentPage,pageSize);
+		localisations = locService.getLocalisations(currentPage,pageSize);		
+	}
+	
+	public void changePage(int page){
+		currentPage = page;
+		updateData();		
+	}
+	
+	public void changePageSize(int pageSize){
+		this.pageSize= pageSize;
+		updateData();
 	}
 
 	@Override
@@ -35,6 +44,9 @@ public class LocalisationTableModel implements TableModel {
 
 	@Override
 	public int getRowCount() {
+		if(localisations == null){
+			return 0;
+		}
 		return localisations.size();
 	}
 
@@ -103,6 +115,11 @@ public class LocalisationTableModel implements TableModel {
 
 	@Override
 	public void removeTableModelListener(TableModelListener listener) {
+	}
+	
+	public int getNbOfLocalisations(){
+		LocalisationService locService = LocalisationService.getInstance();
+		return locService.getNbOfLocalisations();		
 	}
 
 }
