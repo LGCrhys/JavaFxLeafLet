@@ -24,7 +24,8 @@ public class LocalisationService {
 		return instance;
 	}
 	
-	public synchronized List<Localisation> getLocalisations(){
-		return localisations;
+	public synchronized List<Localisation> getLocalisations(int offset, int recordsNb){
+		
+		return localisations.subList(offset, offset+recordsNb);
 	}	
 }

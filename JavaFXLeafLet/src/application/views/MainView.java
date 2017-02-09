@@ -3,13 +3,10 @@ package application.views;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
 import application.Config;
-import application.views.components.LocalisationTable;
-import application.views.components.LocalisationTableModel;
+import application.views.components.panel.LocalisationTablePanel;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -23,7 +20,7 @@ public class MainView extends GridPane {
 	final String html = Config.getProperty("mapurl");
     URI uri;
     private WebView map;
-    private JTable LocalisatonTable;
+    private LocalisationTablePanel localisatonTablePanel;
 
 	public MainView() {
 		
@@ -60,9 +57,8 @@ public class MainView extends GridPane {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-            	LocalisationTableModel model = new LocalisationTableModel();
-            	LocalisatonTable = new LocalisationTable(model);
-            	tableSwingNode.setContent(new JScrollPane(LocalisatonTable));
+            	localisatonTablePanel = new LocalisationTablePanel();
+            	tableSwingNode.setContent(localisatonTablePanel);
             }
         });
     }

@@ -1,4 +1,4 @@
-package application.views.components;
+package application.views.components.table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +14,13 @@ public class LocalisationTableModel implements TableModel {
 	
 	private List<Localisation> localisations = new ArrayList<Localisation>();
 	private final String[] headers = { "Name", "Longitude", "Latitude", "Hostility"};
+	private int pageSize = 40;
+	private int currentPage = 0;
 	
 	
 	public LocalisationTableModel() {
 		LocalisationService locService = LocalisationService.getInstance();
-		localisations = locService.getLocalisations();
+		localisations = locService.getLocalisations(currentPage,pageSize);
 	}
 
 	@Override

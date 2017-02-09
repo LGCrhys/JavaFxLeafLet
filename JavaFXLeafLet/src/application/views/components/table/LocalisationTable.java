@@ -1,4 +1,4 @@
-package application.views.components;
+package application.views.components.table;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -7,8 +7,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 import application.enums.Hostility;
+import application.interfaces.Paginable;
 
-public class LocalisationTable extends JTable {
+public class LocalisationTable extends JTable implements Paginable{
 
 	/**
 	 * 
