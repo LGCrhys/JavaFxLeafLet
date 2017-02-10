@@ -79,7 +79,7 @@ public class LocalisationDescriptionTableModel implements TableModel {
 			.append("<b>Latitude : </b>").append(localisation.getLatitude()).append("<br>")
 			.append("</html>");
 			
-			return builder.toString();//localisations.get(rowIdx);
+			return builder.toString();
 
 		case 2:
 			// Settings
