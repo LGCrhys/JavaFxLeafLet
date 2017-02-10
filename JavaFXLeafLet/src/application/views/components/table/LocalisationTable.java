@@ -20,6 +20,7 @@ public class LocalisationTable extends JTable implements Paginable{
 		super(model);
     	getTableHeader().setBackground(Color.DARK_GRAY);
     	getTableHeader().setForeground(Color.WHITE);
+    	setRowHeight(35);
 	}
 	
 	@Override

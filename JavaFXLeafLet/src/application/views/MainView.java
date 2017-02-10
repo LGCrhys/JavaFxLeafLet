@@ -41,7 +41,7 @@ public class MainView extends GridPane {
 	        getRowConstraints().add(growingRow);
 	        
 	        ColumnConstraints column = new ColumnConstraints();
-	        column.setPercentWidth(75);
+	        column.setPercentWidth(80);
 	        getColumnConstraints().add(column);
 	        
 	        add(map, 0, 0);

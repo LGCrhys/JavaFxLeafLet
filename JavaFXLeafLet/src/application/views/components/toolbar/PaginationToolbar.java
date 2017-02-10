@@ -27,7 +27,7 @@ public class PaginationToolbar extends JToolBar {
 	private JComboBox<Integer> pageSizesCombo;
 	private JLabel pageLabel;
 	private int currentPage = 0;
-	private int pageSize = 40;
+	private int pageSize = 20;
 	private int nbPages;
 	private int recordsCounter = 0;
 	
