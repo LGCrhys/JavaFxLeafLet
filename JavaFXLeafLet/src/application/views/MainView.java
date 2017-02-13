@@ -36,6 +36,7 @@ public class MainView extends GridPane {
 	        map.getEngine().load(uri.toString());
 	        map.setZoom(Screen.getPrimary().getDpi() / 96);
 	        
+	        
 	        RowConstraints growingRow = new RowConstraints();
 	        growingRow.setVgrow(Priority.ALWAYS);
 	        getRowConstraints().add(growingRow);

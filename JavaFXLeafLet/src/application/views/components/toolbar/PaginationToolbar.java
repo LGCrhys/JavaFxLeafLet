@@ -1,5 +1,6 @@
 package application.views.components.toolbar;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -36,6 +37,9 @@ public class PaginationToolbar extends JToolBar {
 		this.paginableComponent = paginableComponent;
 		recordsCounter = this.paginableComponent.getNbOfRecords();
 		nbPages  = recordsCounter / pageSize ; 
+		setFloatable(false);
+		setBackground(Color.LIGHT_GRAY);
+		setPreferredSize(new Dimension(200,30));
 		initButtons();
 	}	
 	
@@ -45,7 +49,9 @@ public class PaginationToolbar extends JToolBar {
         
         buttonIcon = getClass().getClassLoader().getResource("application/resources/icons/previous.png");
         toolbarButton = new JButton(new ImageIcon(buttonIcon));
-        toolbarButton.setToolTipText("previous");
+        toolbarButton.setToolTipText("First Page");
+        toolbarButton.setPreferredSize(new Dimension(24,24));
+        toolbarButton.setBackground(Color.WHITE);
         toolbarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	currentPage = 0;
@@ -57,7 +63,9 @@ public class PaginationToolbar extends JToolBar {
 
         buttonIcon = getClass().getClassLoader().getResource("application/resources/icons/left.png");
         toolbarButton = new JButton(new ImageIcon(buttonIcon));
-        toolbarButton.setToolTipText("left");
+        toolbarButton.setToolTipText("Previous");
+        toolbarButton.setPreferredSize(new Dimension(24,24));
+        toolbarButton.setBackground(Color.WHITE);
         toolbarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(currentPage > 0){
@@ -79,7 +87,9 @@ public class PaginationToolbar extends JToolBar {
 
         buttonIcon = getClass().getClassLoader().getResource("application/resources/icons/right.png");
         toolbarButton = new JButton(new ImageIcon(buttonIcon));
-        toolbarButton.setToolTipText("right");
+        toolbarButton.setToolTipText("Next");
+        toolbarButton.setPreferredSize(new Dimension(24,24));
+        toolbarButton.setBackground(Color.WHITE);
         toolbarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	if(currentPage < nbPages){
@@ -93,7 +103,9 @@ public class PaginationToolbar extends JToolBar {
         
         buttonIcon = getClass().getClassLoader().getResource("application/resources/icons/next.png");
         toolbarButton = new JButton(new ImageIcon(buttonIcon));
-        toolbarButton.setToolTipText("next");
+        toolbarButton.setToolTipText("Last Page");
+        toolbarButton.setPreferredSize(new Dimension(24,24));
+        toolbarButton.setBackground(Color.WHITE);
         toolbarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	currentPage = nbPages;
@@ -107,6 +119,7 @@ public class PaginationToolbar extends JToolBar {
         pageSizesCombo = new JComboBox<Integer>(pageSizes);
         pageSizesCombo.setMaximumSize(new Dimension(50,40));
         pageSizesCombo.setSelectedItem(pageSize);
+        toolbarButton.setBackground(Color.WHITE);
         pageSizesCombo.addItemListener(new ItemListener() {
 			
 			@Override

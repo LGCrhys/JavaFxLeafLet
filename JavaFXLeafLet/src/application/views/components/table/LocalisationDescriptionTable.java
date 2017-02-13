@@ -9,7 +9,6 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import application.enums.Hostility;
 import application.interfaces.Paginable;
 
 public class LocalisationDescriptionTable extends JTable implements Paginable{
