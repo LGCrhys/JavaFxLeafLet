@@ -3,15 +3,17 @@ package application.views.components.table;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import application.interfaces.Paginable;
+import application.data.Localisation;
+import application.interfaces.LocalisationsView;
 
-public class LocalisationDescriptionTable extends JTable implements Paginable{
+public class LocalisationDescriptionTable extends JTable implements LocalisationsView{
 
 	/**
 	 * 
@@ -20,6 +22,7 @@ public class LocalisationDescriptionTable extends JTable implements Paginable{
 	
 	public LocalisationDescriptionTable(LocalisationDescriptionTableModel model) {
 		super(model);
+		
 		setTableHeader(null);
 		setShowVerticalLines(false);
 		setSelectionBackground(Color.LIGHT_GRAY);
@@ -46,25 +49,11 @@ public class LocalisationDescriptionTable extends JTable implements Paginable{
 		return c;
 	}
 
-	 
-		
 	@Override
-	public void goToPage(int page) {
-		((LocalisationDescriptionTableModel) getModel()).changePage(page);
+	public void updateLocalisations(List<Localisation> localisations) {
+		((LocalisationDescriptionTableModel) this.getModel()).setLocalisations(localisations);
 		revalidate();
-		repaint();		
-	}
-
-	@Override
-	public void changePageSize(int size) {
-		((LocalisationDescriptionTableModel) getModel()).changePageSize(size);
-		revalidate();
-		repaint();
-	}
-
-	@Override
-	public int getNbOfRecords() {
-		return ((LocalisationDescriptionTableModel) getModel()).getNbOfLocalisations();
+        repaint();
 	}
 
 }

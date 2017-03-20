@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.net.URL;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -13,10 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 
+import application.data.Localisation;
+import application.interfaces.LocalisationsView;
+import application.interfaces.localisationFilterable;
 import application.views.components.panel.LocationFilterPanel;
-import application.views.components.table.LocalisationDescriptionTable;
 
-public class FilterToolbar extends JToolBar {
+public class FilterToolbar extends JToolBar  implements LocalisationsView {
 
 	/**
 	 * 
@@ -24,9 +27,11 @@ public class FilterToolbar extends JToolBar {
 	private static final long serialVersionUID = 3260982569579733506L;
 	private JButton filterButton;
 	private JPanel filterPanel;
+	private localisationFilterable localisationFilterablePresenter;
 	
-	public FilterToolbar(LocalisationDescriptionTable table){
+	public FilterToolbar(localisationFilterable localisationFilterablePresenter){
 		super();
+		this.localisationFilterablePresenter = localisationFilterablePresenter;
 		setFloatable(false);
 		setBackground(Color.LIGHT_GRAY);
 		setPreferredSize(new Dimension(200,30));
@@ -63,6 +68,11 @@ public class FilterToolbar extends JToolBar {
 		popup.show(this,10,10);
 		
 		
+	}
+
+	@Override
+	public void updateLocalisations(List<Localisation> localisations) {
+		//Nothing to do here
 	}
 
 }

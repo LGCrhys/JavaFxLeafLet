@@ -7,32 +7,15 @@ import javax.swing.ImageIcon;
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 
+import application.data.Localisation;
 import application.enums.Hostility;
-import application.models.Localisation;
-import application.services.LocalisationService;
 
 public class LocalisationDescriptionTableModel implements TableModel { 
 	
 	private List<Localisation> localisations = new ArrayList<Localisation>();
-	private final String[] headers = { "Hostility", "Description", "Settings"};
-	private int pageSize = 0;
-	private int currentPage = 0;
-		
-	public void updateData(){
-		LocalisationService locService = LocalisationService.getInstance();
-		localisations = locService.getLocalisations(currentPage,pageSize);		
-	}
-	
-	public void changePage(int page){
-		currentPage = page;
-		updateData();		
-	}
-	
-	public void changePageSize(int pageSize){
-		this.pageSize= pageSize;
-		updateData();
-	}
 
+	private final String[] headers = { "Hostility", "Description", "Settings"};
+		
 	@Override
 	public int getColumnCount() {
 		return headers.length;
@@ -129,13 +112,8 @@ public class LocalisationDescriptionTableModel implements TableModel {
 	public void removeTableModelListener(TableModelListener listener) {
 	}
 	
-	public int getNbOfLocalisations(){
-		LocalisationService locService = LocalisationService.getInstance();
-		return locService.getNbOfLocalisations();		
-	}
-	
-	public Localisation getLocation(int idx){
-		return localisations.get(idx);
+	public void setLocalisations(List<Localisation> localisations) {
+		this.localisations = localisations;
 	}
 
 }

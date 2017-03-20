@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.net.URL;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.ImageIcon;
@@ -15,15 +16,16 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JToolBar;
 
+import application.data.Localisation;
+import application.interfaces.LocalisationsView;
 import application.interfaces.Paginable;
 
-public class PaginationToolbar extends JToolBar {
+public class PaginationToolbar extends JToolBar implements LocalisationsView {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -859391148827066717L;
-	private Paginable paginableComponent;
 	private static final Integer[] pageSizes= new Integer[]{10,20,40,60,80,100};
 	private JComboBox<Integer> pageSizesCombo;
 	private JLabel pageLabel;
@@ -31,11 +33,12 @@ public class PaginationToolbar extends JToolBar {
 	private int pageSize = 20;
 	private int nbPages;
 	private int recordsCounter = 0;
+	private Paginable presenter;
 	
-	public PaginationToolbar(Paginable paginableComponent){
+	public PaginationToolbar(Paginable paginablePresenter){
 		super();
-		this.paginableComponent = paginableComponent;
-		recordsCounter = this.paginableComponent.getNbOfRecords();
+		this.presenter = paginablePresenter;
+		recordsCounter = this.presenter.getNbOfRecords();
 		nbPages  = recordsCounter / pageSize ; 
 		setFloatable(false);
 		setBackground(Color.LIGHT_GRAY);
@@ -55,7 +58,7 @@ public class PaginationToolbar extends JToolBar {
         toolbarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	currentPage = 0;
-            	paginableComponent.goToPage(currentPage);
+            	presenter.goToPage(currentPage);
                 updateLabel();
             }
         });
@@ -71,7 +74,7 @@ public class PaginationToolbar extends JToolBar {
             	if(currentPage > 0){
             		currentPage--;
             	}
-            	paginableComponent.goToPage(currentPage);
+            	presenter.goToPage(currentPage);
                 updateLabel();
             }
         });
@@ -95,7 +98,7 @@ public class PaginationToolbar extends JToolBar {
             	if(currentPage < nbPages){
             		currentPage++;
             	}
-            	paginableComponent.goToPage(currentPage);
+            	presenter.goToPage(currentPage);
                 updateLabel();
             }
         });
@@ -109,7 +112,7 @@ public class PaginationToolbar extends JToolBar {
         toolbarButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
             	currentPage = nbPages;
-            	paginableComponent.goToPage(nbPages);
+            	presenter.goToPage(nbPages);
                 updateLabel();
             }
         });
@@ -128,15 +131,15 @@ public class PaginationToolbar extends JToolBar {
 				nbPages = recordsCounter / pageSize;
 			    if(currentPage > nbPages){
 		        	currentPage = nbPages;
-		        	paginableComponent.goToPage(currentPage);
+		        	presenter.goToPage(currentPage);
 		        }
-				paginableComponent.changePageSize(pageSize);
+			    presenter.changePageSize(pageSize);
 				updateLabel();
 			}
 		});
         this.add(pageSizesCombo);   
         
-        paginableComponent.changePageSize(pageSize);
+        presenter.changePageSize(pageSize);
         this.updateLabel();
    
     }
@@ -145,4 +148,8 @@ public class PaginationToolbar extends JToolBar {
 		pageLabel.setText(String.format("Page : %d / %d", currentPage, nbPages));
 	}
 
+	@Override
+	public void updateLocalisations(List<Localisation> localisations) {
+		//Nothing to do here		
+	}
 }

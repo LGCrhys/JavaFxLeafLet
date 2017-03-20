@@ -1,4 +1,4 @@
-package application.models;
+package application.data;
 
 import application.enums.Hostility;
 

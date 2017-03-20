@@ -1,12 +1,20 @@
 package application.views;
 
+import java.awt.BorderLayout;
 import java.net.URI;
 import java.net.URISyntaxException;
 
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.SwingUtilities;
 
 import application.Config;
-import application.views.components.panel.LocalisationTablePanel;
+import application.models.LocalisationModel;
+import application.presenters.LocalisationsPresenter;
+import application.views.components.table.LocalisationDescriptionTable;
+import application.views.components.table.LocalisationDescriptionTableModel;
+import application.views.components.toolbar.FilterToolbar;
+import application.views.components.toolbar.PaginationToolbar;
 import javafx.embed.swing.SwingNode;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -20,11 +28,15 @@ public class MainView extends GridPane {
 	final String html = Config.getProperty("mapurl");
     URI uri;
     private WebView map;
-    private LocalisationTablePanel localisatonTablePanel;
+    private JPanel localisatonTablePanel;
+    private LocalisationsPresenter localisationPresenter;
+    private LocalisationModel localisationModel;
 
 	public MainView() {
 		
 		super();
+		localisationModel = new LocalisationModel();
+		localisationPresenter = new LocalisationsPresenter(localisationModel);
 		try {
 			uri = new URI(html);
 			
@@ -58,7 +70,17 @@ public class MainView extends GridPane {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {
-            	localisatonTablePanel = new LocalisationTablePanel();
+            	localisatonTablePanel = new JPanel(new BorderLayout());            	
+            	LocalisationDescriptionTableModel model = new LocalisationDescriptionTableModel();
+        		LocalisationDescriptionTable table = new LocalisationDescriptionTable(model);        	
+        		FilterToolbar filterToolbar = new FilterToolbar(localisationPresenter);
+        		PaginationToolbar paginationToolbar = new PaginationToolbar(localisationPresenter);
+        		localisationPresenter.addView(table);
+        		localisationPresenter.addView(filterToolbar);
+        		localisationPresenter.addView(paginationToolbar);
+        		localisatonTablePanel.add(new JScrollPane(table),BorderLayout.CENTER);
+        		localisatonTablePanel.add(filterToolbar, BorderLayout.PAGE_START);
+        		localisatonTablePanel.add(paginationToolbar, BorderLayout.PAGE_END);
             	tableSwingNode.setContent(localisatonTablePanel);
             }
         });

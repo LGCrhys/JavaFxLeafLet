@@ -13,7 +13,6 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import application.enums.Hostility;
-import application.models.Localisation;
 
 public class LocalisationDomParser {
 	

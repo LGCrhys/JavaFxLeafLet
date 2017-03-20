@@ -2,8 +2,8 @@ package application.services;
 
 import java.util.List;
 
+import application.data.Localisation;
 import application.data.LocalisationDomParser;
-import application.models.Localisation;
 
 public class LocalisationService {
 
