@@ -20,7 +20,7 @@ import application.data.Localisation;
 import application.interfaces.LocalisationsView;
 import application.interfaces.Paginable;
 
-public class PaginationToolbar extends JToolBar implements LocalisationsView {
+public class PaginationToolbar extends JToolBar  implements LocalisationsView{
 
 	/**
 	 * 
@@ -150,6 +150,12 @@ public class PaginationToolbar extends JToolBar implements LocalisationsView {
 
 	@Override
 	public void updateLocalisations(List<Localisation> localisations) {
-		//Nothing to do here		
+		int nbOfRecords = this.presenter.getNbOfRecords();
+		if(nbOfRecords != recordsCounter){
+			currentPage = 0;
+			recordsCounter = nbOfRecords;
+		}
+		nbPages  = recordsCounter / pageSize ;
+		updateLabel();		
 	}
 }

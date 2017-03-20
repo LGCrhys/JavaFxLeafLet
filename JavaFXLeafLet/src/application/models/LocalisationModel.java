@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import application.data.Localisation;
+import application.enums.Hostility;
 import application.services.LocalisationService;
 
 public class LocalisationModel {
@@ -32,6 +33,13 @@ public class LocalisationModel {
         this.pageSize= pageSize;
         updateData();
     }
+
+	public void filterLocalisationsByAttr(String attr, Object value) {
+		currentPage = 0;
+		LocalisationService locService = LocalisationService.getInstance();
+		locService.filterLocalisations(attr, value);
+		updateData();
+	}
 		
 	public int getNbOfLocalisations(){
 		LocalisationService locService = LocalisationService.getInstance();
@@ -44,6 +52,11 @@ public class LocalisationModel {
 	
 	public Localisation getLocalisation(int idx){
 		return localisations.get(idx);
+	}
+
+	public List<Hostility> getHostilityTypes() {
+		LocalisationService locService = LocalisationService.getInstance();
+		return locService.getHostilityTypes();	
 	}
 
 }
