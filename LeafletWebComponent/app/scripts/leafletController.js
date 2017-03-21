@@ -104,15 +104,13 @@ app
   	      lat: parseFloat(ap.latitude),
   	      lng: parseFloat(ap.longitude),
   	      icon: {
-  	      		type: 'awesomeMarker',
-                  icon: 'star',
-                  markerColor: (ap.hostilite==="Hostile")?'red':((ap.hostilite==="Ami")?'green':'orange')
-              }
+	      	type: 'awesomeMarker',
+            markerColor: (ap.hostility==="Hostile")?'red':((ap.hostility==="Ami")?'green':'orange')
+          }
         });
       });
       return markers;
     };
-
     leafletData.getLayers().then(function(layers) {
         $scope.markerClusterGrp = layers.overlays.locs;
         var clusters            = $scope.markerClusterGrp.getLayers();
