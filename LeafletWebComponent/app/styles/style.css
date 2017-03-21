@@ -1,0 +1,86 @@
+
+
+@font-face {
+  font-family: 'Rationale';
+  src: url('../assets/fonts/Rationale-Regular.ttf') format('truetype'); /* Chrome 4+, Firefox 3.5, Opera 10+, Safari 3—5 */
+}  
+
+ul {
+    list-style: none;
+}
+
+li{
+  height: 90%;
+}
+.map {
+  /*padding-top: 30px;*/
+  height: 100%;
+  display: block;
+}
+
+/* LEGEND Map */
+.legend {
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: rgba(255,255,255, 0.9);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+    padding: 6px 8px;
+    width: 180px;
+    line-height: 18px;
+    color: #555;
+}
+.legend i {
+    width: 16px;
+    height: 16px;
+    float: left;
+    margin-right: 8px;
+    opacity: 0.7;
+}
+
+.hostile{
+  border: 1px dotted red;
+  border-radius: 5px;
+}
+.hostile.active{
+  background: red;
+}
+
+.inconnu{
+  border: 1px dotted orange;
+  border-radius: 5px;
+}
+.inconnu.active{
+  background: orange;
+}
+
+.ami{
+  border: 1px dotted green;
+  border-radius: 5px;
+}
+.ami.active{
+  background: green;
+}
+
+/* LEAFLET POPUP*/
+
+.leaflet-popup-content {
+  background-color: rgb(25, 41, 100);
+  margin: 0 0;
+  line-height: 1.4;
+  color: white;
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    color: white;
+}
+
+.leaflet-popup-content-wrapper {
+  padding: 0;
+  border-radius: 15px;
+}
+
+.leaflet-control-label {
+    border-bottom: none !important;
+    margin-bottom : -18px !important;
+    z-index: 99999;
+}

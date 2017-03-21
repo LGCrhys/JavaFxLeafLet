@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="intelRef">
+
+  <head>
+    <meta charset="utf-8" content="initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>MoB EWC Prototype</title>
+    <script>
+    document.write('<base href="' + document.location + '" />');
+    </script>
+  </head>
+
+  <body ng-controller="LeafletMapsController" class="ng-cloak"> 
+    <div class="map">
+      <leaflet lf-center="center"  legend="legend" controls="controls" layers="layers" markers="markers" width="100%" height="100%"></leaflet>
+    </div>
+  </body>
+
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.min.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
+
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
+    <script src="../bower_components/leaflet/dist/leaflet.js"></script>
+    <script src="../bower_components/leaflet-plugins/layer/tile/Bing.js"></script>
+    <script src="../bower_components/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+    <script src="../bower_components/leaflet-draw/dist/leaflet.draw.js"></script>
+    <script src="../bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+    <script src="../bower_components/Leaflet.label/dist/leaflet.label.js"></script>
+    <script src="../bower_components/leaflet-search/dist/leaflet-search.src.js"></script>
+    <script src="../bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
+    <script src="../bower_components/leaflet-fullscreen/dist/Leaflet.fullscreen.min.js"></script>
+    <script src="../bower_components/leaflet-polylinedecorator/leaflet.polylineDecorator.js"></script>
+    <script src="../bower_components/leaflet-measure/dist/leaflet-measure.min.js"></script>
+    <script src="../bower_components/esri-leaflet/dist/esri-leaflet.js"></script>
+
+    <script src="../bower_components/iso8601-js-period/iso8601.min.js"></script>
+    <script src="../bower_components/leaflet-timedimension/dist/leaflet.timedimension.min.js"></script>
+
+    <script src="../bower_components/mustache.js/mustache.min.js"></script>
+
+    <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="../bower_components/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="../bower_components/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <script src="bower_components/underscore/underscore.js"></script>
+    <link rel="stylesheet" href="../bower_components/leaflet-search/dist/leaflet-search.min.css" />
+    <link rel="stylesheet" href="../bower_components/leaflet-draw/dist/leaflet.draw.css" />
+    <link rel="stylesheet" href="../bower_components/Leaflet.label/dist/leaflet.label.css" />
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+    <link rel="stylesheet" href="../bower_components/Leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+    <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../bower_components/leaflet-fullscreen/dist/leaflet.fullscreen.css">
+    <link rel="stylesheet" href="../bower_components/leaflet-timedimension/dist/leaflet.timedimension.control.min.css">
+    <link rel="stylesheet" href="../bower_components/leaflet-measure/dist/leaflet-measure.css">
+
+    <script src="scripts/leafletController.js"></script>
+
+    <link rel="stylesheet" href="styles/style.css" />
+
+</html>
